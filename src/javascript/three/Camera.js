@@ -15,10 +15,10 @@ export class Camera {
     this.camera = new THREE.PerspectiveCamera(
       45,
       sizes.width / sizes.height,
-      0.1,
-      100
+      0.01,
+      10
     )
-    this.camera.position.z = 4
+    this.camera.position.set(-1.5, 1, 2)
     scene.add(this.camera)
   }
 
