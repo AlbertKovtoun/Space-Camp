@@ -119,5 +119,27 @@ export class Camp {
     })
   }
 
-  setSolarPanelAnimations() {}
+  setSolarPanelAnimations() {
+    for (const solarPanel of this.solarPanelMeshes) {
+      gsap.fromTo(
+        solarPanel.rotation,
+        {
+          z: Math.PI / 12,
+          duration: 5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: Math.random() * 2,
+        },
+        {
+          z: -Math.PI / 12,
+          duration: 5,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: Math.random() * 2,
+        }
+      )
+    }
+  }
 }
