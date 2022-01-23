@@ -1,13 +1,14 @@
 import * as THREE from "three"
-import { TextureLoader } from "three"
+import { gsap } from "gsap"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { Reflector } from "three/examples/jsm/objects/Reflector"
 import { scene, sizes } from "./Experience"
 
 export class Camp {
   constructor() {
-    this.gltfLoader = new GLTFLoader()
-    this.textureLoader = new TextureLoader()
+    this.loadingManager = new THREE.LoadingManager(() => {
+      this.setSolarPanelAnimations()
+    })
+    this.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loadEnvMap()
     this.loadCamp()
   }
@@ -33,11 +34,20 @@ export class Camp {
     this.doorMaterial = new THREE.MeshStandardMaterial({
       color: 0x00ff00,
     })
+    this.circleLightMaterial = new THREE.MeshStandardMaterial({
+      color: "pink",
+    })
+    this.lightMaterial = new THREE.MeshStandardMaterial({
+      color: "red",
+    })
 
     this.gltfLoader.load("/assets/models/SpaceCamp8.gltf", (gltf) => {
       this.camp = gltf.scene
 
       //Retrieve meshes
+      this.fractMeshes = []
+      this.solarPanelMeshes = []
+
       this.chromeObjectsMesh = this.camp.children.find((child) => {
         return child.name === "ChromeObjects"
       })
@@ -59,14 +69,25 @@ export class Camp {
       this.doorObjectsMesh = this.camp.children.find((child) => {
         return child.name === "DoorObjects"
       })
-
-      this.fractMeshes = []
+      this.circleLightObjectMesh = this.camp.children.find((child) => {
+        return child.name === "CircleLightObject"
+      })
+      this.LightObjectMesh = this.camp.children.find((child) => {
+        return child.name === "LightObject"
+      })
 
       //?Not the best way to do it for sure
       for (let i = 1; i < 32; i++) {
         this.fractMeshes.push(
           this.camp.children.find((child) => {
             return child.name === `Fract${i}`
+          })
+        )
+      }
+      for (let i = 1; i < 3; i++) {
+        this.solarPanelMeshes.push(
+          this.camp.children.find((child) => {
+            return child.name === `SolarPanel${i}`
           })
         )
       }
@@ -79,9 +100,14 @@ export class Camp {
       this.tubeObjectsMesh.material = this.tubeMaterial
       this.windowObjectsMesh.material = this.windowMaterial
       this.doorObjectsMesh.material = this.doorMaterial
+      this.circleLightObjectMesh.material = this.circleLightMaterial
+      this.LightObjectMesh.material = this.lightMaterial
 
       for (const fract of this.fractMeshes) {
         fract.material = this.tubeMaterial
+      }
+      for (const solarPanel of this.solarPanelMeshes) {
+        solarPanel.material = this.doorMaterial
       }
 
       this.camp.traverse((child) => {
@@ -92,4 +118,6 @@ export class Camp {
       scene.add(this.camp)
     })
   }
+
+  setSolarPanelAnimations() {}
 }

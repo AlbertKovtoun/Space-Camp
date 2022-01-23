@@ -19,6 +19,6 @@ export class Renderer {
     this.renderer.shadowMap.enabled = true
     this.renderer.shadowMap.type = THREE.VSMShadowMap
     this.renderer.shadowMap.needsUpdate = false
-    this.renderer.setClearColor(0x0000ff)
+    // this.renderer.setClearColor(0x0000ff)
   }
 }
