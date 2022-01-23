@@ -7,6 +7,7 @@ import { Renderer } from "./Renderer"
 import { Sizes } from "./Sizes"
 import { Camp } from "./Camp"
 import { Lights } from "./Lights"
+import { PostProcessing } from "./PostProcessing"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -15,6 +16,9 @@ document.body.appendChild(stats.dom)
 export const pane = new Pane()
 export const lightFolder = pane.addFolder({
   title: "Lights",
+})
+export const postProcessingFolder = pane.addFolder({
+  title: "PostProcessing",
 })
 
 export const canvas = document.querySelector("canvas.webgl")
@@ -31,6 +35,8 @@ export const camera = new Camera()
 
 export const renderer = new Renderer()
 
+export const postProcessing = new PostProcessing()
+
 //Animate
 const clock = new THREE.Clock()
 
@@ -43,7 +49,8 @@ const tick = () => {
   camera.controls.update()
 
   // Render
-  renderer.renderer.render(scene, camera.camera)
+  // renderer.renderer.render(scene, camera.camera)
+  postProcessing.composer.render()
 
   setTimeout(() => {
     window.requestAnimationFrame(tick)
