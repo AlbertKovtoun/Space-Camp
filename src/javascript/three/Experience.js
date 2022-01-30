@@ -8,6 +8,7 @@ import { Sizes } from "./Sizes"
 import { Camp } from "./Camp"
 import { Lights } from "./Lights"
 import { PostProcessing } from "./PostProcessing"
+import { Sky } from "./Sky"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -28,6 +29,8 @@ export const scene = new THREE.Scene()
 export const camp = new Camp()
 
 export const lights = new Lights()
+
+export const sky = new Sky()
 
 export const sizes = new Sizes()
 
