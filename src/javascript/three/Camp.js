@@ -29,18 +29,19 @@ export class Camp {
       roughness: 0.2,
     })
     this.windowMaterial = new THREE.MeshStandardMaterial({
-      color: 0x0000ff,
+      emissive: 0xffffff,
+      emissiveIntensity: 1,
     })
     this.doorMaterial = new THREE.MeshStandardMaterial({
-      color: 0x00ff00,
+      color: 0xa8cfe7,
     })
     this.circleLightMaterial = new THREE.MeshStandardMaterial({
       // color: 0xa8cfe7,
       emissive: 0xa8cfe7,
-      emissiveIntensity: 1
     })
     this.lightMaterial = new THREE.MeshStandardMaterial({
-      color: "red",
+      emissive: 0xff0000,
+      emissiveIntensity: 2
     })
 
     this.gltfLoader.load("/assets/models/SpaceCamp8.gltf", (gltf) => {

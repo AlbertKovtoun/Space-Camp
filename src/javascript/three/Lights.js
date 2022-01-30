@@ -19,7 +19,7 @@ export class Lights {
     const pointLight = new THREE.PointLight(0xbbddff, 0.4)
     pointLight.position.set(0, 2, 2)
     pointLight.castShadow = true
-    pointLight.shadow.normalBias = 0.05
+    pointLight.shadow.normalBias = 0.01
     pointLight.shadow.mapSize.width = 1024 * 4
     pointLight.shadow.mapSize.height = 1024 * 4
     pointLight.shadow.radius = 10
@@ -55,8 +55,18 @@ export class Lights {
 
     this.circleLight = new THREE.PointLight(0xa8cfe7, 0.6, 0.5, 2)
     this.circleLightHelper = new THREE.PointLightHelper(this.circleLight, 0.02)
-    this.circleLight.position.set(-0.506, 0.266, 0.461)
+    this.circleLight.position.set(-0.506, 0.266, 0.45)
     scene.add(this.circleLight, this.circleLightHelper)
+
+    this.towerLight = new THREE.PointLight(0xff0000, 5, 0.2, 1)
+    this.towerLightHelper = new THREE.PointLightHelper(this.towerLight, 0.02)
+    this.towerLight.position.set(0.362, 0.935, -0.145)
+    scene.add(this.towerLight)
+
+    this.coreLight = new THREE.PointLight(0xffffff, 2, 0.5, 1)
+    this.coreLightHelper = new THREE.PointLightHelper(this.coreLight, 0.02)
+    this.coreLight.position.set(-0.087, 0.4, -0.374)
+    scene.add(this.coreLight, this.coreLightHelper)
   }
 
   setSolarPanelLightsAnimations() {
@@ -65,7 +75,7 @@ export class Lights {
     setInterval(() => {
       lightSwitch = !lightSwitch
       this.solarPanelLight1.visible = lightSwitch
-      this.solarPanelLight2.visible = lightSwitch 
+      this.solarPanelLight2.visible = lightSwitch
     }, 2000)
   }
 
@@ -145,6 +155,44 @@ export class Lights {
       max: 0.5,
       step: 0.001,
       label: "CircleLightz",
+    })
+
+    lightFolder.addInput(this.towerLight.position, "x", {
+      min: -1,
+      max: 1,
+      step: 0.001,
+      label: "TowerLightx",
+    })
+    lightFolder.addInput(this.towerLight.position, "y", {
+      min: -1,
+      max: 1,
+      step: 0.001,
+      label: "TowerLighty",
+    })
+    lightFolder.addInput(this.towerLight.position, "z", {
+      min: -1,
+      max: 1,
+      step: 0.001,
+      label: "TowerLightz",
+    })
+
+    lightFolder.addInput(this.coreLight.position, "x", {
+      min: -0.4,
+      max: 0.4,
+      step: 0.001,
+      label: "CoreLightx",
+    })
+    lightFolder.addInput(this.coreLight.position, "y", {
+      min: -0.4,
+      max: 0.4,
+      step: 0.001,
+      label: "CoreLighty",
+    })
+    lightFolder.addInput(this.coreLight.position, "z", {
+      min: -0.4,
+      max: 0.4,
+      step: 0.001,
+      label: "CoreLightz",
     })
   }
 }
