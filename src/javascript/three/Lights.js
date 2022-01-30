@@ -65,7 +65,7 @@ export class Lights {
     setInterval(() => {
       lightSwitch = !lightSwitch
       this.solarPanelLight1.visible = lightSwitch
-      this.solarPanelLight2.visible = lightSwitch
+      this.solarPanelLight2.visible = lightSwitch 
     }, 2000)
   }
 
