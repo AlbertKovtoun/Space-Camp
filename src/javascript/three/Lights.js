@@ -16,7 +16,7 @@ export class Lights {
     const ambientLight = new THREE.AmbientLight(0xbbddff, 0.1)
     scene.add(ambientLight)
 
-    const pointLight = new THREE.PointLight(0xbbddff, 0.6)
+    const pointLight = new THREE.PointLight(0xbbddff, 0.4)
     pointLight.position.set(0, 2, 2)
     pointLight.castShadow = true
     pointLight.shadow.normalBias = 0.05
@@ -52,6 +52,11 @@ export class Lights {
     this.tubeLights[1].position.set(-0.283, 0.239, 0.326)
     this.tubeLights[2].position.set(0.13, 0.239, 0.326)
     this.tubeLights[3].position.set(0.176, 0.239, 0.326)
+
+    this.circleLight = new THREE.PointLight(0xa8cfe7, 0.6, 0.5, 2)
+    this.circleLightHelper = new THREE.PointLightHelper(this.circleLight, 0.02)
+    this.circleLight.position.set(-0.506, 0.266, 0.461)
+    scene.add(this.circleLight, this.circleLightHelper)
   }
 
   setSolarPanelLightsAnimations() {
@@ -121,6 +126,25 @@ export class Lights {
       max: 0.5,
       step: 0.001,
       label: "SolLight2z",
+    })
+
+    lightFolder.addInput(this.circleLight.position, "x", {
+      min: -0.6,
+      max: 0.75,
+      step: 0.001,
+      label: "CircleLightx",
+    })
+    lightFolder.addInput(this.circleLight.position, "y", {
+      min: -0.6,
+      max: 0.5,
+      step: 0.001,
+      label: "CircleLighty",
+    })
+    lightFolder.addInput(this.circleLight.position, "z", {
+      min: -0.6,
+      max: 0.5,
+      step: 0.001,
+      label: "CircleLightz",
     })
   }
 }

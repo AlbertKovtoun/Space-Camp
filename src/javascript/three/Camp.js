@@ -35,7 +35,9 @@ export class Camp {
       color: 0x00ff00,
     })
     this.circleLightMaterial = new THREE.MeshStandardMaterial({
-      color: "pink",
+      // color: 0xa8cfe7,
+      emissive: 0xa8cfe7,
+      emissiveIntensity: 1
     })
     this.lightMaterial = new THREE.MeshStandardMaterial({
       color: "red",
