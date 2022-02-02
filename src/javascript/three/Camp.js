@@ -7,6 +7,7 @@ export class Camp {
   constructor() {
     this.loadingManager = new THREE.LoadingManager(() => {
       this.setSolarPanelAnimations()
+      this.setFractAnimation()
     })
     this.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loadEnvMap()
@@ -41,7 +42,7 @@ export class Camp {
     })
     this.lightMaterial = new THREE.MeshStandardMaterial({
       emissive: 0xff0000,
-      emissiveIntensity: 2
+      emissiveIntensity: 2,
     })
 
     this.gltfLoader.load("/assets/models/SpaceCamp8.gltf", (gltf) => {
@@ -143,6 +144,28 @@ export class Camp {
           delay: Math.random() * 2,
         }
       )
+    }
+  }
+
+  setFractAnimation() {
+    for (const fract of this.fractMeshes) {
+      gsap.to(fract.position, {
+        y: "+=0.06",
+        duration: 5,
+        repeat: -1,
+        delay: Math.random() * 5,
+        yoyo: true,
+        ease: "power1.inOut",
+      })
+      gsap.to(fract.rotation, {
+        x: Math.PI * Math.random() * 2,
+        y: Math.PI * Math.random() * 2,
+        duration: 5,
+        repeat: -1,
+        delay: Math.random() * 5,
+        yoyo: true,
+        ease: "power1.inOut",
+      })
     }
   }
 }

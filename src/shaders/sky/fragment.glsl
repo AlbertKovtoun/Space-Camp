@@ -1,8 +1,11 @@
+uniform vec3 uBottomColor;
+uniform vec3 uTopColor;
+
 varying vec2 vUv;
 
 void main()
 {
-    float fade = vUv.y;
+    vec3 fade = mix(uBottomColor, uTopColor, vUv.y) * .8;
 
-    gl_FragColor = vec4(vec3(fade), 1.0);
+    gl_FragColor = vec4(fade, 1.0);
 }

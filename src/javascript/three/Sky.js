@@ -6,6 +6,11 @@ import skyFragmentShader from "../../shaders/sky/fragment.glsl"
 
 export class Sky {
   constructor() {
+    this.debugObject = {
+      bottomColor: new THREE.Color(0x000000),
+      topColor: new THREE.Color(0xbbddff),
+    }
+
     this.setSky()
   }
 
@@ -16,7 +21,10 @@ export class Sky {
       fragmentShader: skyFragmentShader,
       side: THREE.BackSide,
 
-      uniforms: {},
+      uniforms: {
+        uBottomColor: { value: this.debugObject.bottomColor },
+        uTopColor: { value: this.debugObject.topColor },
+      },
     })
     this.sky = new THREE.Mesh(this.skyGeometry, this.skyMaterial)
     scene.add(this.sky)
