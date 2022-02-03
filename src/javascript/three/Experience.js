@@ -28,6 +28,8 @@ export const canvas = document.querySelector("canvas.webgl")
 
 export const scene = new THREE.Scene()
 
+export const environment = new Environment()
+
 export const camp = new Camp()
 
 export const lights = new Lights()
@@ -36,7 +38,7 @@ export const sky = new Sky()
 
 export const snow = new Snow()
 
-export const environment = new Environment()
+export const cameraState = "overview"
 
 export const sizes = new Sizes()
 

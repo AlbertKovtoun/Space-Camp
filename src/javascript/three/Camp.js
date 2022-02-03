@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import { gsap } from "gsap"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { scene, sizes } from "./Experience"
+import { environment, scene, sizes } from "./Experience"
 
 export class Camp {
   constructor() {
@@ -23,7 +23,9 @@ export class Camp {
       roughness: 0,
       metalness: 0.8,
     })
-    this.groundMaterial = new THREE.MeshStandardMaterial({ color: 0x7e98c1 })
+    this.groundMaterial = new THREE.MeshStandardMaterial({
+      color: 0x7e98c1,
+    })
     this.floorMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
     this.doorFrameMaterial = new THREE.MeshStandardMaterial({ color: 0x7c7c7c })
     this.tubeMaterial = new THREE.MeshStandardMaterial({
@@ -46,7 +48,7 @@ export class Camp {
       emissiveIntensity: 2,
     })
 
-    this.gltfLoader.load("/assets/models/SpaceCamp10.gltf", (gltf) => {
+    this.gltfLoader.load("/assets/models/SpaceCamp11.gltf", (gltf) => {
       this.camp = gltf.scene
 
       //Retrieve meshes
