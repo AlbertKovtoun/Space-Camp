@@ -45,7 +45,7 @@ export class Camp {
       emissiveIntensity: 2,
     })
 
-    this.gltfLoader.load("/assets/models/SpaceCamp8.gltf", (gltf) => {
+    this.gltfLoader.load("/assets/models/SpaceCamp10.gltf", (gltf) => {
       this.camp = gltf.scene
 
       //Retrieve meshes
