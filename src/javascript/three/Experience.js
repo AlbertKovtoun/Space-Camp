@@ -55,8 +55,9 @@ const tick = () => {
 
   // particles.insidePoints.rotation.y = elapsedTime * 0.2
 
-  // Update controls
-  camera.controls.update()
+  //! Update controls
+  // camera.controls.update()
+  camera.controls.update(10)
 
   // Render
   // renderer.renderer.render(scene, camera.camera)
