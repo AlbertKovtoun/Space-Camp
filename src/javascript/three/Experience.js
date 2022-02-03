@@ -10,6 +10,7 @@ import { Lights } from "./Lights"
 import { PostProcessing } from "./PostProcessing"
 import { Sky } from "./Sky"
 import { Snow } from "./Snow"
+import { Environment } from "./Environment"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -33,7 +34,9 @@ export const lights = new Lights()
 
 export const sky = new Sky()
 
-export const particles = new Snow()
+export const snow = new Snow()
+
+export const environment = new Environment()
 
 export const sizes = new Sizes()
 
@@ -51,7 +54,7 @@ const tick = () => {
 
   const elapsedTime = clock.getElapsedTime()
 
-  particles.insideSphereMaterial.uniforms.uTime.value = elapsedTime
+  snow.insideSphereMaterial.uniforms.uTime.value = elapsedTime
 
   // particles.insidePoints.rotation.y = elapsedTime * 0.2
 

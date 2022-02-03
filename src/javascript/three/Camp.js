@@ -8,6 +8,7 @@ export class Camp {
     this.loadingManager = new THREE.LoadingManager(() => {
       this.setSolarPanelAnimations()
       this.setFractAnimation()
+      this.setRoverHeadAnimation()
     })
     this.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loadEnvMap()
@@ -78,6 +79,9 @@ export class Camp {
       })
       this.LightObjectMesh = this.camp.children.find((child) => {
         return child.name === "LightObject"
+      })
+      this.roverHead = this.camp.children.find((child) => {
+        return child.name === "RoverHead"
       })
 
       //?Not the best way to do it for sure
@@ -167,5 +171,27 @@ export class Camp {
         ease: "power1.inOut",
       })
     }
+  }
+
+  setRoverHeadAnimation() {
+    gsap.fromTo(
+      this.roverHead.rotation,
+      {
+        z: Math.PI,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: Math.random() * 2,
+      },
+      {
+        z: -Math.PI,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: Math.random() * 2,
+      }
+    )
   }
 }
