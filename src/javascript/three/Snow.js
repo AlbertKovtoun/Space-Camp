@@ -1,16 +1,16 @@
 import * as THREE from "three"
 
-import coreParticlesVertexShader from "../../shaders/coreParticles/vertex.glsl"
-import coreParticlesFragmentShader from "../../shaders/coreParticles/fragment.glsl"
+import snowVertexShader from "../../shaders/snow/vertex.glsl"
+import snowFragmentShader from "../../shaders/snow/fragment.glsl"
 import { scene } from "./Experience"
 
-export class Particles {
+export class Snow {
   constructor() {
     this.setParticles()
   }
 
   setParticles() {
-    const particleCount = 50000
+    const particleCount = 100000
 
     const geometry = new THREE.BufferGeometry()
 
@@ -44,9 +44,10 @@ export class Particles {
     geometry.computeBoundingSphere()
 
     this.insideSphereMaterial = new THREE.ShaderMaterial({
-      vertexShader: coreParticlesVertexShader,
-      fragmentShader: coreParticlesFragmentShader,
+      vertexShader: snowVertexShader,
+      fragmentShader: snowFragmentShader,
       transparent: true,
+      depthWrite: false,
 
       uniforms: {
         uTime: { value: 0 },

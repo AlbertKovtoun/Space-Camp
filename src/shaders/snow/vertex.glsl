@@ -87,13 +87,13 @@ void main()
 {
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
 
-    elevation = cnoise(vec3(modelPosition.xy, uTime)) * 0.05;
+    elevation = cnoise(vec3(modelPosition.xy, uTime)) * 0.02;
 
-    progress = mod(uTime * 0.2 * aRandom, 1.0);
+    progress = mod(uTime * 0.25 * aRandom, 1.0);
 
     modelPosition.xz += vec2(progress);
 
-    // modelPosition.xyz -= elevation;
+    modelPosition.xyz -= elevation;
 
     //Move model back
     modelPosition.xz -= 0.75;

@@ -9,7 +9,7 @@ import { Camp } from "./Camp"
 import { Lights } from "./Lights"
 import { PostProcessing } from "./PostProcessing"
 import { Sky } from "./Sky"
-import { Particles } from "./Particles"
+import { Snow } from "./Snow"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -33,7 +33,7 @@ export const lights = new Lights()
 
 export const sky = new Sky()
 
-export const particles = new Particles()
+export const particles = new Snow()
 
 export const sizes = new Sizes()
 
@@ -53,7 +53,7 @@ const tick = () => {
 
   particles.insideSphereMaterial.uniforms.uTime.value = elapsedTime
 
-  // particles.insidePoints.rotation.y = elapsedTime * 0.8
+  // particles.insidePoints.rotation.y = elapsedTime * 0.2
 
   // Update controls
   camera.controls.update()
