@@ -85,6 +85,9 @@ export class Camp {
       this.roverHead = this.camp.children.find((child) => {
         return child.name === "RoverHead"
       })
+      this.roverBody = this.camp.children.find((child) => {
+        return child.name === "RoverBody"
+      })
 
       //?Not the best way to do it for sure
       for (let i = 1; i < 32; i++) {

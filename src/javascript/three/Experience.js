@@ -11,6 +11,7 @@ import { PostProcessing } from "./PostProcessing"
 import { Sky } from "./Sky"
 import { Snow } from "./Snow"
 import { Environment } from "./Environment"
+import { Raycaster } from "./Raycaster"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -37,6 +38,8 @@ export const lights = new Lights()
 export const sky = new Sky()
 
 export const snow = new Snow()
+
+export const raycaster = new Raycaster()
 
 export const cameraState = "overview"
 

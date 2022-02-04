@@ -10,7 +10,7 @@ export class Snow {
   }
 
   setParticles() {
-    const particleCount = 100000
+    const particleCount = 400000
 
     const geometry = new THREE.BufferGeometry()
 
@@ -47,7 +47,6 @@ export class Snow {
       vertexShader: snowVertexShader,
       fragmentShader: snowFragmentShader,
       transparent: true,
-      depthWrite: false,
 
       uniforms: {
         uTime: { value: 0 },
