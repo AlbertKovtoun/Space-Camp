@@ -49,7 +49,7 @@ export class Camp {
       emissiveIntensity: 2,
     })
 
-    this.gltfLoader.load("/assets/models/SpaceCamp11.gltf", (gltf) => {
+    this.gltfLoader.load("/assets/models/SpaceCamp12.gltf", (gltf) => {
       this.camp = gltf.scene
 
       //Retrieve meshes
@@ -202,11 +202,14 @@ export class Camp {
   }
 
   setObjectsToTest() {
-    this.raycastObjects = [this.roverHead, this.roverBody]
-    const cube = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({ color: "red" })
-    )
-    scene.add(cube)
+    //?For some reason roverHead and roverBody are groups and not meshes? And you can't raycast groups
+    this.raycastObjects = []
+
+    this.roverHead.traverse((child) => {
+      this.raycastObjects.push(child)
+    })
+    this.roverBody.traverse((child) => {
+      this.raycastObjects.push(child)
+    })
   }
 }
