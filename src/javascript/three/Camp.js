@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import { gsap } from "gsap"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
-import { environment, scene, sizes } from "./Experience"
+import { environment, helpers, scene, sizes } from "./Experience"
 
 export class Camp {
   constructor() {
@@ -203,7 +203,7 @@ export class Camp {
 
   setObjectsToTest() {
     //?For some reason roverHead and roverBody are groups and not meshes? And you can't raycast groups
-    this.raycastObjects = []
+    this.raycastObjects = [helpers.coreClickMesh]
 
     this.roverHead.traverse((child) => {
       this.raycastObjects.push(child)

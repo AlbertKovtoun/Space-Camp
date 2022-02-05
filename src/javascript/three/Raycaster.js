@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { camera, camp, sizes } from "./Experience"
+import { camera, camp, helpers, sizes } from "./Experience"
 
 export class Raycaster {
   constructor() {
@@ -48,6 +48,10 @@ export class Raycaster {
 
     window.addEventListener("click", () => {
       if (this.currentIntersect) {
+        if (helpers.coreClickMesh) {
+          console.log("Clicked on coremesh")
+        }
+
         if (this.currentIntersect.object.name.includes("Rover")) {
           camera.transitionToRover()
           roverContainer.classList.add("active")

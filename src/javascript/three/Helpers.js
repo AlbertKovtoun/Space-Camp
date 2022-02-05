@@ -7,6 +7,7 @@ export class Helpers {
 
     if (this.visible) {
       this.setHelpers()
+      this.setCoreClickArea()
       this.setHelpersTweaks()
     }
   }
@@ -25,6 +26,19 @@ export class Helpers {
     )
     this.roverTargetHelper.position.set(0.05, 0.2, 0.5)
     scene.add(this.roverTargetHelper)
+  }
+
+  setCoreClickArea() {
+    this.coreClickMesh = new THREE.Mesh(
+      new THREE.SphereGeometry(0.1, 20, 20),
+      new THREE.MeshBasicMaterial({
+        color: "tomato",
+        transparent: true,
+        opacity: 1,
+      })
+    )
+    this.coreClickMesh.position.set(0, 1, 0)
+    scene.add(this.coreClickMesh)
   }
 
   setHelpersTweaks() {
