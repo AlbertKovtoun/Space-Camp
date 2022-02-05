@@ -3,8 +3,12 @@ import { helpersFolder, scene } from "./Experience"
 
 export class Helpers {
   constructor() {
-    this.setHelpers()
-    this.setHelpersTweaks()
+    this.visible = true
+
+    if (this.visible) {
+      this.setHelpers()
+      this.setHelpersTweaks()
+    }
   }
 
   setHelpers() {

@@ -21,6 +21,7 @@ document.body.appendChild(stats.dom)
 export const pane = new Pane()
 export const lightFolder = pane.addFolder({
   title: "Lights",
+  expanded: false,
 })
 export const postProcessingFolder = pane.addFolder({
   title: "PostProcessing",
@@ -82,7 +83,7 @@ const tick = () => {
 
   setTimeout(() => {
     window.requestAnimationFrame(tick)
-  }, 1000 / 60)
+  }, 1000 / 120)
 
   stats.end()
 }
