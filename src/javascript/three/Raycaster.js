@@ -45,7 +45,7 @@ export class Raycaster {
     window.addEventListener("click", () => {
       if (this.currentIntersect) {
         if (this.currentIntersect.object.name.includes("Rover")) {
-          console.log("Clicked on Rover!")
+          camera.transitionToRover()
         }
       }
     })

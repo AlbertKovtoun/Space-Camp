@@ -2,7 +2,7 @@ import * as THREE from "three"
 import CameraControls from "camera-controls"
 CameraControls.install({ THREE: THREE })
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
-import { camera, canvas, renderer, scene, sizes } from "./Experience"
+import { camera, canvas, helpers, renderer, scene, sizes } from "./Experience"
 
 export class Camera {
   constructor() {
@@ -51,24 +51,41 @@ export class Camera {
 
   setSmoothScroll() {
     const scrollAmount = 0.1
-    const minDistance = 1
-    const maxDistance = 3
-    let distanceToCenter = this.camera.position.distanceTo(
+    this.minZoomDistance = 1
+    this.maxZoomDistance = 3
+    this.distanceToCenter = this.camera.position.distanceTo(
       new THREE.Vector3(0, 0, 0)
     )
 
     window.onwheel = (e) => {
       if (e.deltaY >= 0) {
         // Scrolling Down with mouse
-        if (distanceToCenter < maxDistance) {
-          this.controls.dollyTo((distanceToCenter += scrollAmount), true)
+        if (this.distanceToCenter < this.maxZoomDistance) {
+          this.controls.dollyTo((this.distanceToCenter += scrollAmount), true)
         }
       } else {
         // Scrolling Up with mouse
-        if (distanceToCenter > minDistance) {
-          this.controls.dollyTo((distanceToCenter -= scrollAmount), true)
+        if (this.distanceToCenter > this.minZoomDistance) {
+          this.controls.dollyTo((this.distanceToCenter -= scrollAmount), true)
         }
       }
     }
+  }
+
+  setRoverState() {
+    this.controls.setLookAt(0.05, 0.3, 0.8, 0.05, 0.2, 0.5, true)
+    setTimeout(() => {
+      this.minZoomDistance = 0.3
+      this.maxZoomDistance = 0.4
+      this.distanceToCenter = this.camera.position.distanceTo(
+        new THREE.Vector3(0.05, 0.2, 0.5)
+      )
+      console.log(this.distanceToCenter)
+    }, 2000)
+  }
+
+  transitionToRover() {
+    console.log("Transitioning to Rover!")
+    this.setRoverState()
   }
 }

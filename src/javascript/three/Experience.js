@@ -12,6 +12,7 @@ import { Sky } from "./Sky"
 import { Snow } from "./Snow"
 import { Environment } from "./Environment"
 import { Raycaster } from "./Raycaster"
+import { Helpers } from "./Helpers"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -23,6 +24,9 @@ export const lightFolder = pane.addFolder({
 })
 export const postProcessingFolder = pane.addFolder({
   title: "PostProcessing",
+})
+export const helpersFolder = pane.addFolder({
+  title: "Helpers",
 })
 
 export const canvas = document.querySelector("canvas.webgl")
@@ -38,6 +42,8 @@ export const lights = new Lights()
 export const sky = new Sky()
 
 export const snow = new Snow()
+
+export const helpers = new Helpers()
 
 export const cameraState = "overview"
 
