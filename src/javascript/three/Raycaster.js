@@ -30,11 +30,13 @@ export class Raycaster {
       if (intersects.length) {
         if (!this.currentIntersect) {
           console.log("MOUSE ENTERED ITEM")
+          document.body.style.cursor = "pointer"
         }
         this.currentIntersect = intersects[0]
       } else {
         if (this.currentIntersect) {
           console.log("MOUSE LEFT ITEM")
+          document.body.style.cursor = "default"
         }
         this.currentIntersect = null
       }
