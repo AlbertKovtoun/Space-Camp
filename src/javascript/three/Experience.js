@@ -39,13 +39,13 @@ export const sky = new Sky()
 
 export const snow = new Snow()
 
-export const raycaster = new Raycaster()
-
 export const cameraState = "overview"
 
 export const sizes = new Sizes()
 
 export const camera = new Camera()
+
+export const raycaster = new Raycaster()
 
 export const renderer = new Renderer()
 
@@ -53,6 +53,14 @@ export const postProcessing = new PostProcessing()
 
 //Animate
 const clock = new THREE.Clock()
+
+let currentIntersect = null
+
+const cube = new THREE.Mesh(
+  new THREE.BoxGeometry(1, 1, 1),
+  new THREE.MeshBasicMaterial({ color: "red" })
+)
+scene.add(cube)
 
 const tick = () => {
   stats.begin()
@@ -62,6 +70,23 @@ const tick = () => {
   snow.insideSphereMaterial.uniforms.uTime.value = elapsedTime
 
   // particles.insidePoints.rotation.y = elapsedTime * 0.2
+
+  //Raycast
+  raycaster.raycaster.setFromCamera(raycaster.mouse, camera.camera)
+
+  const intersects = raycaster.raycaster.intersectObject(cube)
+
+  if (intersects.length) {
+    if (!currentIntersect) {
+      console.log("MOUSE ENTERED ITEM")
+    }
+    currentIntersect = intersects[0]
+  } else {
+    if (currentIntersect) {
+      console.log("MOUSE LEFT ITEM")
+    }
+    currentIntersect = null
+  }
 
   //! Update controls
   // camera.controls.update()

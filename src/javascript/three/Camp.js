@@ -9,6 +9,7 @@ export class Camp {
       this.setSolarPanelAnimations()
       this.setFractAnimation()
       this.setRoverHeadAnimation()
+      this.setObjectsToTest()
     })
     this.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loadEnvMap()
@@ -198,5 +199,14 @@ export class Camp {
         delay: Math.random() * 2,
       }
     )
+  }
+
+  setObjectsToTest() {
+    this.raycastObjects = [this.roverHead, this.roverBody]
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(1, 1, 1),
+      new THREE.MeshBasicMaterial({ color: "red" })
+    )
+    scene.add(cube)
   }
 }
