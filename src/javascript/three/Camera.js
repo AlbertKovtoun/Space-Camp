@@ -25,6 +25,7 @@ export class Camera {
     this.setCamera()
     this.setCameraControls()
     this.setSmoothScroll()
+    this.roverToOrbit()
   }
 
   setCamera() {
@@ -81,22 +82,39 @@ export class Camera {
     }
   }
 
-  setRoverState() {
+  orbitToRover() {
     this.controls.setLookAt(0.05, 0.3, 0.8, 0.05, 0.2, 0.5, true)
-    this.controls.enabled = false
     setTimeout(() => {
-      this.controls.enabled = true
       this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.4
       this.distanceToCenter = this.camera.position.distanceTo(
         new THREE.Vector3(0.05, 0.2, 0.5)
       )
       console.log(this.distanceToCenter)
-    }, 2500)
+    }, 1000)
+  }
+
+  roverToOrbit() {
+    const roverContainer = document.querySelector(".rover-container")
+
+    const roverButton = document
+      .querySelector(".rover-container-back-button")
+      .addEventListener("click", () => {
+        this.controls.setLookAt(-1.5, 1, 2, 0, 0, 0, true)
+        roverContainer.classList.remove("active")
+        setTimeout(() => {
+          this.minZoomDistance = 1
+          this.maxZoomDistance = 3
+          this.distanceToCenter = this.camera.position.distanceTo(
+            new THREE.Vector3(0, 0, 0)
+          )
+          console.log(this.distanceToCenter)
+        }, 1000)
+      })
   }
 
   transitionToRover() {
     console.log("Transitioning to Rover!")
-    this.setRoverState()
+    this.orbitToRover()
   }
 }

@@ -1,7 +1,8 @@
 //Import general styling
 @import "./style/general/typography.scss";
 
-//Import file styling
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;800&display=swap");
+// font-family: 'Source Code Pro', monospace;
 
 //Colors
 $primary-color: #ff0000;
@@ -13,6 +14,7 @@ $secondary-color: #ffff00;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Source Code Pro", monospace;
 }
 
 .webgl {
@@ -21,4 +23,24 @@ $secondary-color: #ffff00;
   top: 0;
   z-index: 0;
   outline: none;
+}
+
+.rover-container {
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  background-color: #fff;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 5%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  padding: 2%;
+}
+
+.rover-container.active {
+  visibility: visible;
+  opacity: 1;
 }

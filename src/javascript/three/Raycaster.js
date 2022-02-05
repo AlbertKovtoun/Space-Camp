@@ -29,13 +29,13 @@ export class Raycaster {
 
       if (intersects.length) {
         if (!this.currentIntersect) {
-          console.log("MOUSE ENTERED ITEM")
+          // console.log("MOUSE ENTERED ITEM")
           document.body.style.cursor = "pointer"
         }
         this.currentIntersect = intersects[0]
       } else {
         if (this.currentIntersect) {
-          console.log("MOUSE LEFT ITEM")
+          // console.log("MOUSE LEFT ITEM")
           document.body.style.cursor = "default"
         }
         this.currentIntersect = null
@@ -44,10 +44,13 @@ export class Raycaster {
   }
 
   checkClick() {
+    const roverContainer = document.querySelector(".rover-container")
+
     window.addEventListener("click", () => {
       if (this.currentIntersect) {
         if (this.currentIntersect.object.name.includes("Rover")) {
           camera.transitionToRover()
+          roverContainer.classList.add("active")
         }
       }
     })
