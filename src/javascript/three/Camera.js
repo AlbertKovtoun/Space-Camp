@@ -113,6 +113,19 @@ export class Camera {
       })
   }
 
+  orbitToCore() {
+    this.controls.setLookAt(-0.09, 0.35, -0.13, -0.09, 0.31, -0.37, true)
+    // this.controls.enabled = false
+    setTimeout(() => {
+      this.minZoomDistance = 0.2
+      this.maxZoomDistance = 0.25
+      this.distanceToCenter = this.camera.position.distanceTo(
+        new THREE.Vector3(-0.09, 0.31, -0.37)
+      )
+      console.log(this.distanceToCenter)
+    }, 1000)
+  }
+
   transitionToRover() {
     console.log("Transitioning to Rover!")
     this.orbitToRover()

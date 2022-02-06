@@ -50,6 +50,7 @@ export class Raycaster {
       if (this.currentIntersect) {
         if (helpers.coreClickMesh) {
           console.log("Clicked on coremesh")
+          camera.orbitToCore()
         }
 
         if (this.currentIntersect.object.name.includes("Rover")) {
