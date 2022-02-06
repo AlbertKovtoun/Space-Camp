@@ -13,6 +13,7 @@ import { Snow } from "./Snow"
 import { Environment } from "./Environment"
 import { Raycaster } from "./Raycaster"
 import { Helpers } from "./Helpers"
+import { Particles } from "./Particles"
 
 const stats = new Stats()
 stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
@@ -44,6 +45,8 @@ export const sky = new Sky()
 
 export const snow = new Snow()
 
+export const particles = new Particles()
+
 export const helpers = new Helpers()
 
 export const cameraState = "overview"
@@ -67,8 +70,9 @@ const tick = () => {
   const elapsedTime = clock.getElapsedTime()
 
   snow.insideSphereMaterial.uniforms.uTime.value = elapsedTime
+  particles.insideSphereMaterial.uniforms.uTime.value = elapsedTime
 
-  // particles.insidePoints.rotation.y = elapsedTime * 0.2
+  particles.insidePoints.rotation.y = elapsedTime * 0.01
 
   //Raycast
   raycaster.checkHover()

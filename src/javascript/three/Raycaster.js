@@ -45,17 +45,18 @@ export class Raycaster {
 
   checkClick() {
     const roverContainer = document.querySelector(".rover-container")
+    const coreContainer = document.querySelector(".core-container")
 
     window.addEventListener("click", () => {
       if (this.currentIntersect) {
-        if (helpers.coreClickMesh) {
-          console.log("Clicked on coremesh")
+        if (this.currentIntersect.object.name.includes("coreClick")) {
+          coreContainer.classList.add("active")
           camera.orbitToCore()
         }
-
         if (this.currentIntersect.object.name.includes("Rover")) {
-          camera.transitionToRover()
+          // camera.transitionToRover()
           roverContainer.classList.add("active")
+          camera.orbitToRover()
         }
       }
     })

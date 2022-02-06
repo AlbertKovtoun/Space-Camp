@@ -44,6 +44,7 @@ export class Helpers {
         opacity: 0,
       })
     )
+    this.coreClickMesh.name = "coreClick"
     this.coreClickMesh.position.set(-0.09, 0.31, -0.37)
     scene.add(this.coreClickMesh)
   }

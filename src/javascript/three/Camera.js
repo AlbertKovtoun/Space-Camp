@@ -26,6 +26,7 @@ export class Camera {
     this.setCameraControls()
     this.setSmoothScroll()
     this.roverToOrbit()
+    this.coreToOrbit()
   }
 
   setCamera() {
@@ -82,6 +83,13 @@ export class Camera {
     }
   }
 
+  autoRotate() {
+    //Auto rotate
+    setInterval(() => {
+      this.controls.azimuthAngle += 0.2 * THREE.MathUtils.DEG2RAD
+    }, 1000 / 60)
+  }
+
   orbitToRover() {
     this.controls.setLookAt(0.05, 0.3, 0.8, 0.05, 0.2, 0.5, true)
     setTimeout(() => {
@@ -115,7 +123,7 @@ export class Camera {
 
   orbitToCore() {
     this.controls.setLookAt(-0.09, 0.35, -0.13, -0.09, 0.31, -0.37, true)
-    // this.controls.enabled = false
+    this.controls.enabled = false
     setTimeout(() => {
       this.minZoomDistance = 0.2
       this.maxZoomDistance = 0.25
@@ -126,8 +134,28 @@ export class Camera {
     }, 1000)
   }
 
-  transitionToRover() {
-    console.log("Transitioning to Rover!")
-    this.orbitToRover()
+  // transitionToRover() {
+  //   console.log("Transitioning to Rover!")
+  //   this.orbitToRover()
+  // }
+
+  coreToOrbit() {
+    const coreContainer = document.querySelector(".core-container")
+
+    const coreButton = document
+      .querySelector(".core-container-back-button")
+      .addEventListener("click", () => {
+        this.controls.setLookAt(-1.5, 1, 2, 0, 0, 0, true)
+        coreContainer.classList.remove("active")
+        setTimeout(() => {
+          this.minZoomDistance = 1
+          this.maxZoomDistance = 3
+          this.distanceToCenter = this.camera.position.distanceTo(
+            new THREE.Vector3(0, 0, 0)
+          )
+          console.log(this.distanceToCenter)
+        }, 1000)
+        this.controls.enabled = true
+      })
   }
 }

@@ -25,7 +25,8 @@ $secondary-color: #ffff00;
   outline: none;
 }
 
-.rover-container {
+.rover-container,
+.core-container {
   position: absolute;
   width: 500px;
   height: 400px;
@@ -40,7 +41,8 @@ $secondary-color: #ffff00;
   padding: 2%;
 }
 
-.rover-container.active {
+.rover-container.active,
+.core-container.active {
   visibility: visible;
   opacity: 1;
 }

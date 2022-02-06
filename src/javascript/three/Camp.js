@@ -117,17 +117,17 @@ export class Camp {
       this.circleLightObjectMesh.material = this.circleLightMaterial
       this.LightObjectMesh.material = this.lightMaterial
 
+      this.camp.traverse((child) => {
+        child.castShadow = true
+        child.receiveShadow = true
+      })
+
       for (const fract of this.fractMeshes) {
         fract.material = this.tubeMaterial
       }
       for (const solarPanel of this.solarPanelMeshes) {
         solarPanel.material = this.doorMaterial
       }
-
-      this.camp.traverse((child) => {
-        child.castShadow = true
-        child.receiveShadow = true
-      })
 
       scene.add(this.camp)
     })
