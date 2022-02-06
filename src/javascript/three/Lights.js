@@ -63,7 +63,7 @@ export class Lights {
     this.towerLight.position.set(0.362, 0.935, -0.145)
     scene.add(this.towerLight)
 
-    this.coreLight = new THREE.PointLight(0xffffff, 2, 0.5, 1)
+    this.coreLight = new THREE.PointLight(0xfa8cfe7, 2, 0.5, 1)
     this.coreLightHelper = new THREE.PointLightHelper(this.coreLight, 0.02)
     this.coreLight.position.set(-0.087, 0.4, -0.374)
     scene.add(this.coreLight, this.coreLightHelper)
