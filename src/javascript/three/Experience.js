@@ -26,6 +26,7 @@ export const lightFolder = pane.addFolder({
 })
 export const postProcessingFolder = pane.addFolder({
   title: "PostProcessing",
+  expanded: false,
 })
 export const helpersFolder = pane.addFolder({
   title: "Helpers",
@@ -73,6 +74,11 @@ const tick = () => {
   particles.insideSphereMaterial.uniforms.uTime.value = elapsedTime
 
   particles.insidePoints.rotation.y = elapsedTime * 0.01
+
+  //Camera autorotate
+  if (camera.autoRotateEnabled) {
+    camera.autoRotate()
+  }
 
   //Raycast
   raycaster.checkHover()

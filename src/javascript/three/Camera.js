@@ -21,6 +21,7 @@ export class Camera {
       y: 1,
       z: 2,
     }
+    this.autoRotateEnabled = false
 
     this.setCamera()
     this.setCameraControls()
@@ -85,9 +86,7 @@ export class Camera {
 
   autoRotate() {
     //Auto rotate
-    setInterval(() => {
-      this.controls.azimuthAngle += 0.2 * THREE.MathUtils.DEG2RAD
-    }, 1000 / 60)
+    this.controls.azimuthAngle += 0.2 * THREE.MathUtils.DEG2RAD
   }
 
   orbitToRover() {
@@ -124,6 +123,7 @@ export class Camera {
   orbitToCore() {
     this.controls.setLookAt(-0.09, 0.35, -0.13, -0.09, 0.31, -0.37, true)
     this.controls.enabled = false
+    this.autoRotateEnabled = true
     setTimeout(() => {
       this.minZoomDistance = 0.2
       this.maxZoomDistance = 0.25
@@ -155,6 +155,7 @@ export class Camera {
           )
           console.log(this.distanceToCenter)
         }, 1000)
+        this.autoRotateEnabled = false
         this.controls.enabled = true
       })
   }
