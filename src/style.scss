@@ -28,10 +28,11 @@ $secondary-color: #ffff00;
 .rover-container,
 .core-container {
   position: absolute;
-  width: 500px;
-  height: 400px;
-  background-color: #fff;
-  right: 5%;
+  width: 400px;
+  height: 300px;
+  background-color: black;
+  color: #a8cfe7;
+  right: 8%;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 5%;
@@ -39,6 +40,16 @@ $secondary-color: #ffff00;
   opacity: 0;
   transition: opacity 2s ease-in-out;
   padding: 2%;
+  // line-height: 40px;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1rem;
 }
 
 .rover-container.active,

@@ -3,13 +3,9 @@ import { helpersFolder, scene } from "./Experience"
 
 export class Helpers {
   constructor() {
-    this.visible = true
-
-    if (this.visible) {
-      this.setHelpers()
-      this.setCoreClickArea()
-      this.setHelpersTweaks()
-    }
+    this.setHelpers()
+    this.setCoreClickArea()
+    this.setHelpersTweaks()
   }
 
   setHelpers() {
@@ -18,21 +14,21 @@ export class Helpers {
       new THREE.MeshBasicMaterial({ color: "red" })
     )
     this.roverPositionHelper.position.set(0.05, 0.3, 0.8)
-    scene.add(this.roverPositionHelper)
+    // scene.add(this.roverPositionHelper)
 
     this.roverTargetHelper = new THREE.Mesh(
       new THREE.SphereGeometry(0.01, 20, 20),
       new THREE.MeshBasicMaterial({ color: "purple" })
     )
     this.roverTargetHelper.position.set(0.05, 0.2, 0.5)
-    scene.add(this.roverTargetHelper)
+    // scene.add(this.roverTargetHelper)
 
     this.corePositionHelper = new THREE.Mesh(
       new THREE.SphereGeometry(0.01, 20, 20),
       new THREE.MeshBasicMaterial({ color: "blue" })
     )
     this.corePositionHelper.position.set(-0.09, 0.35, -0.17)
-    scene.add(this.corePositionHelper)
+    // scene.add(this.corePositionHelper)
   }
 
   setCoreClickArea() {

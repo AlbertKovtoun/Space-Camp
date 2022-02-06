@@ -125,7 +125,8 @@ export class Camera {
     this.controls.enabled = false
     this.autoRotateEnabled = true
     setTimeout(() => {
-      this.minZoomDistance = 0.2
+      //Doens't make any sense, but works!
+      this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.25
       this.distanceToCenter = this.camera.position.distanceTo(
         new THREE.Vector3(-0.09, 0.31, -0.37)
