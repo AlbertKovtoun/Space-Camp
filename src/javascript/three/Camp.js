@@ -5,11 +5,23 @@ import { environment, helpers, scene, sizes } from "./Experience"
 
 export class Camp {
   constructor() {
+    this.loadingScreen = document.querySelector(".loading-screen")
+
     this.loadingManager = new THREE.LoadingManager(() => {
       this.setSolarPanelAnimations()
       this.setFractAnimation()
       this.setRoverHeadAnimation()
       this.setObjectsToTest()
+
+      //Remove loading screen
+      gsap.to(this.loadingScreen, {
+        opacity: 0,
+        duration: 4,
+        ease: "power1.inOut",
+        onComplete: () => {
+          this.loadingScreen.style.display = "none"
+        },
+      })
     })
     this.gltfLoader = new GLTFLoader(this.loadingManager)
     this.loadEnvMap()
@@ -49,7 +61,7 @@ export class Camp {
       emissiveIntensity: 2,
     })
 
-    this.gltfLoader.load("/assets/models/SpaceCamp12.gltf", (gltf) => {
+    this.gltfLoader.load("/models/SpaceCamp12.gltf", (gltf) => {
       this.camp = gltf.scene
 
       //Retrieve meshes

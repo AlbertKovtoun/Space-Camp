@@ -11,7 +11,12 @@ export class Renderer {
   setRenderer() {
     this.renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true,
+      powerPreference: "high-performance",
+      premultipliedAlpha: false,
+      depth: false,
+      stencil: false,
+      antialias: false,
+      preserveDrawingBuffer: true,
     })
     this.renderer.setSize(sizes.width, sizes.height)
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))

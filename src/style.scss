@@ -1,5 +1,4 @@
-//Import general styling
-@import "./style/general/typography.scss";
+// @import "./style/general/typography.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;800&display=swap");
 // font-family: 'Source Code Pro', monospace;
@@ -15,6 +14,46 @@ $secondary-color: #ffff00;
   margin: 0;
   box-sizing: border-box;
   font-family: "Source Code Pro", monospace;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  z-index: 999;
+
+  background-color: white;
+
+  display: grid;
+  place-items: center;
+}
+
+.info {
+  position: absolute;
+
+  bottom: 5%;
+  right: 5%;
+
+  color: white;
+
+  /* border: red solid 2px; */
+
+  z-index: 998;
+
+  a {
+    color: #7e98c1;
+    text-decoration: none;
+  }
 }
 
 .webgl {

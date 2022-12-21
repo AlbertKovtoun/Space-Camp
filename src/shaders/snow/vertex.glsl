@@ -76,6 +76,7 @@ float cnoise(vec3 P){
 attribute float aRandom;
 
 uniform float uTime;
+uniform float uPixelRatio;
 
 varying vec2 vUv;
 
@@ -90,7 +91,7 @@ void main()
     // elevation = cnoise(vec3(modelPosition.xy, uTime)) * 0.02;
     elevation = cnoise(vec3(modelPosition.xz * 50.0, uTime)) * 0.02;
 
-    progress = mod(uTime * 0.25 * aRandom, 1.0);
+    progress = mod(uTime * 0.25 * aRandom + 0.5, 1.0);
 
     // modelPosition.xz += vec2(progress);
     modelPosition.y -= progress;
@@ -104,7 +105,10 @@ void main()
 
     vec4 projectedPosition = projectionMatrix * viewPosition;
 
-    gl_PointSize = progress * 3.0;
+    // gl_PointSize = progress * 3.0;
+
+    gl_PointSize = 0.8 * uPixelRatio * (aRandom + 1.0) * 2.0;
+    gl_PointSize *= (1.0 / - viewPosition.z);
 
     gl_Position = projectedPosition;
 

@@ -1,9 +1,10 @@
-# Space Camp
+# Vite config for modern web projects + three.js
 
 ## Setup
+
 Download [Node.js](https://nodejs.org/en/download/) and run the following commands:
 
-``` bash
+```bash
 # Install dependencies (only the first time)
 npm install
 

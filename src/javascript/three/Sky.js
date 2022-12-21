@@ -1,8 +1,8 @@
 import * as THREE from "three"
 import { scene } from "./Experience"
 
-import skyVertexShader from "../../shaders/sky/vertex.glsl"
-import skyFragmentShader from "../../shaders/sky/fragment.glsl"
+import skyVertexShader from "../../shaders/sky/vertex.glsl?raw"
+import skyFragmentShader from "../../shaders/sky/fragment.glsl?raw"
 
 export class Sky {
   constructor() {

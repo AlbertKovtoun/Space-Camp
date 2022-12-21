@@ -5,7 +5,7 @@ CameraControls.install({ THREE: THREE })
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import {
   canvas,
-  deltaTime,
+  // deltaTime,
   helpers,
   renderer,
   scene,
@@ -31,17 +31,8 @@ export class Camera {
   }
 
   setCamera() {
-    this.camera = new THREE.PerspectiveCamera(
-      45,
-      sizes.width / sizes.height,
-      0.1,
-      100
-    )
-    this.camera.position.set(
-      this.cameraPosition.x,
-      this.cameraPosition.y,
-      this.cameraPosition.z
-    )
+    this.camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
+    this.camera.position.set(this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z)
     scene.add(this.camera)
   }
 
@@ -57,7 +48,7 @@ export class Camera {
     this.controls.minPolarAngle = Math.PI / 8
     this.controls.maxPolarAngle = Math.PI / (2 + 0.2)
     this.controls.maxDistance = 8
-    // this.controls.mouseButtons.right = CameraControls.ACTION.NONE
+    this.controls.mouseButtons.right = CameraControls.ACTION.NONE
     this.controls.mouseButtons.wheel = CameraControls.ACTION.NONE
   }
 
@@ -65,9 +56,7 @@ export class Camera {
     const scrollAmount = 0.1
     this.minZoomDistance = 1
     this.maxZoomDistance = 3
-    this.distanceToCenter = this.camera.position.distanceTo(
-      new THREE.Vector3(0, 0, 0)
-    )
+    this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
 
     window.onwheel = (e) => {
       if (e.deltaY >= 0) {
@@ -94,9 +83,7 @@ export class Camera {
     setTimeout(() => {
       this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.4
-      this.distanceToCenter = this.camera.position.distanceTo(
-        new THREE.Vector3(0.05, 0.2, 0.5)
-      )
+      this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0.05, 0.2, 0.5))
       console.log(this.distanceToCenter)
     }, 1000)
   }
@@ -112,9 +99,7 @@ export class Camera {
         setTimeout(() => {
           this.minZoomDistance = 1
           this.maxZoomDistance = 3
-          this.distanceToCenter = this.camera.position.distanceTo(
-            new THREE.Vector3(0, 0, 0)
-          )
+          this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
           console.log(this.distanceToCenter)
         }, 1000)
       })
@@ -128,9 +113,7 @@ export class Camera {
       //Doens't make any sense, but works!
       this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.25
-      this.distanceToCenter = this.camera.position.distanceTo(
-        new THREE.Vector3(-0.09, 0.31, -0.37)
-      )
+      this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(-0.09, 0.31, -0.37))
       console.log(this.distanceToCenter)
     }, 1000)
   }
@@ -151,9 +134,7 @@ export class Camera {
         setTimeout(() => {
           this.minZoomDistance = 1
           this.maxZoomDistance = 3
-          this.distanceToCenter = this.camera.position.distanceTo(
-            new THREE.Vector3(0, 0, 0)
-          )
+          this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
           console.log(this.distanceToCenter)
         }, 1000)
         this.autoRotateEnabled = false

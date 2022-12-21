@@ -1,7 +1,7 @@
 import * as THREE from "three"
 
-import coreVertexShader from "../../shaders/coreParticles/vertex.glsl"
-import coreFragmentShader from "../../shaders/coreParticles/fragment.glsl"
+import coreVertexShader from "../../shaders/coreParticles/vertex.glsl?raw"
+import coreFragmentShader from "../../shaders/coreParticles/fragment.glsl?raw"
 import { scene } from "./Experience"
 
 export class Particles {
@@ -47,9 +47,12 @@ export class Particles {
       vertexShader: coreVertexShader,
       fragmentShader: coreFragmentShader,
       transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
 
       uniforms: {
         uTime: { value: 0 },
+        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
         uColor: {
           value: new THREE.Color(new THREE.Color(0xa8cfe7)),
         },

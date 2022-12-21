@@ -26,27 +26,19 @@ export class Lights {
     scene.add(pointLight)
 
     this.solarPanelLight1 = new THREE.PointLight(0xff0000, 0.8, 0.5, 2.5)
-    const solarPanelLight1Helper = new THREE.PointLightHelper(
-      this.solarPanelLight1,
-      0.02
-    )
+    // const solarPanelLight1Helper = new THREE.PointLightHelper(this.solarPanelLight1, 0.02)
     this.solarPanelLight1.position.set(0.5, 0.359, 0.326)
-    scene.add(this.solarPanelLight1, solarPanelLight1Helper)
+    scene.add(this.solarPanelLight1)
 
     this.solarPanelLight2 = new THREE.PointLight(0xff0000, 0.8, 0.5, 2.5)
-    const solarPanelLight2Helper = new THREE.PointLightHelper(
-      this.solarPanelLight2,
-      0.02
-    )
+    // const solarPanelLight2Helper = new THREE.PointLightHelper(this.solarPanelLight2, 0.02)
     this.solarPanelLight2.position.set(0.546, 0.359, -0.076)
-    scene.add(this.solarPanelLight2, solarPanelLight2Helper)
+    scene.add(this.solarPanelLight2)
 
     for (let i = 0; i < 4; i++) {
       this.tubeLights.push(new THREE.PointLight(0xfa8cfe7, 0.6, 0.5, 2))
-      this.tubeLightHelpers.push(
-        new THREE.PointLightHelper(this.tubeLights[i], 0.02)
-      )
-      scene.add(this.tubeLights[i], this.tubeLightHelpers[i])
+      // this.tubeLightHelpers.push(new THREE.PointLightHelper(this.tubeLights[i], 0.02))
+      scene.add(this.tubeLights[i])
     }
     this.tubeLights[0].position.set(-0.328, 0.239, 0.326)
     this.tubeLights[1].position.set(-0.283, 0.239, 0.326)
@@ -54,19 +46,19 @@ export class Lights {
     this.tubeLights[3].position.set(0.176, 0.239, 0.326)
 
     this.circleLight = new THREE.PointLight(0xa8cfe7, 0.6, 0.5, 2)
-    this.circleLightHelper = new THREE.PointLightHelper(this.circleLight, 0.02)
+    // this.circleLightHelper = new THREE.PointLightHelper(this.circleLight, 0.02)
     this.circleLight.position.set(-0.506, 0.266, 0.45)
-    scene.add(this.circleLight, this.circleLightHelper)
+    scene.add(this.circleLight)
 
     this.towerLight = new THREE.PointLight(0xff0000, 5, 0.2, 1)
-    this.towerLightHelper = new THREE.PointLightHelper(this.towerLight, 0.02)
+    // this.towerLightHelper = new THREE.PointLightHelper(this.towerLight, 0.02)
     this.towerLight.position.set(0.362, 0.935, -0.145)
     scene.add(this.towerLight)
 
     this.coreLight = new THREE.PointLight(0xfa8cfe7, 2, 0.5, 1)
-    this.coreLightHelper = new THREE.PointLightHelper(this.coreLight, 0.02)
+    // this.coreLightHelper = new THREE.PointLightHelper(this.coreLight, 0.02)
     this.coreLight.position.set(-0.087, 0.4, -0.374)
-    scene.add(this.coreLight, this.coreLightHelper)
+    scene.add(this.coreLight)
   }
 
   setSolarPanelLightsAnimations() {

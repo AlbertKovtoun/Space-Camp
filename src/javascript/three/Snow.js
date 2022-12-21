@@ -1,7 +1,7 @@
 import * as THREE from "three"
 
-import snowVertexShader from "../../shaders/snow/vertex.glsl"
-import snowFragmentShader from "../../shaders/snow/fragment.glsl"
+import snowVertexShader from "../../shaders/snow/vertex.glsl?raw"
+import snowFragmentShader from "../../shaders/snow/fragment.glsl?raw"
 import { scene } from "./Experience"
 
 export class Snow {
@@ -31,8 +31,8 @@ export class Snow {
 
       if (positionVectors[i].distanceTo(new THREE.Vector3(0, 0, 0)) < n / 2) {
         positions.push(x, y, z)
-        randoms[i] = Math.random()
       }
+      randoms[i] = Math.random()
     }
 
     geometry.setAttribute(
@@ -47,9 +47,12 @@ export class Snow {
       vertexShader: snowVertexShader,
       fragmentShader: snowFragmentShader,
       transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
 
       uniforms: {
         uTime: { value: 0 },
+        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
         // uColor: {
         //   value: new THREE.Color(this.debugObject.insideParticleSphereColor),
         // },

@@ -15,11 +15,12 @@ import { Raycaster } from "./Raycaster"
 import { Helpers } from "./Helpers"
 import { Particles } from "./Particles"
 
-const stats = new Stats()
-stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild(stats.dom)
+// const stats = new Stats()
+// stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+// document.body.appendChild(stats.dom)
 
 export const pane = new Pane()
+pane.hidden = true
 export const lightFolder = pane.addFolder({
   title: "Lights",
   expanded: false,
@@ -66,7 +67,7 @@ export const postProcessing = new PostProcessing()
 const clock = new THREE.Clock()
 
 const tick = () => {
-  stats.begin()
+  // stats.begin()
 
   const elapsedTime = clock.getElapsedTime()
 
@@ -91,11 +92,11 @@ const tick = () => {
   // renderer.renderer.render(scene, camera.camera)
   postProcessing.composer.render()
 
-  setTimeout(() => {
-    window.requestAnimationFrame(tick)
-  }, 1000 / 120)
+  // setTimeout(() => {
+  window.requestAnimationFrame(tick)
+  // }, 1000 / 120)
 
-  stats.end()
+  // stats.end()
 }
 
 tick()
