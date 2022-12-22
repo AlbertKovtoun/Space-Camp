@@ -84,7 +84,7 @@ export class Camera {
       this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.4
       this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0.05, 0.2, 0.5))
-      console.log(this.distanceToCenter)
+      // console.log(this.distanceToCenter)
     }, 1000)
   }
 
@@ -100,7 +100,7 @@ export class Camera {
           this.minZoomDistance = 1
           this.maxZoomDistance = 3
           this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
-          console.log(this.distanceToCenter)
+          // console.log(this.distanceToCenter)
         }, 1000)
       })
   }
@@ -114,7 +114,7 @@ export class Camera {
       this.minZoomDistance = 0.3
       this.maxZoomDistance = 0.25
       this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(-0.09, 0.31, -0.37))
-      console.log(this.distanceToCenter)
+      // console.log(this.distanceToCenter)
     }, 1000)
   }
 
@@ -135,7 +135,7 @@ export class Camera {
           this.minZoomDistance = 1
           this.maxZoomDistance = 3
           this.distanceToCenter = this.camera.position.distanceTo(new THREE.Vector3(0, 0, 0))
-          console.log(this.distanceToCenter)
+          // console.log(this.distanceToCenter)
         }, 1000)
         this.autoRotateEnabled = false
         this.controls.enabled = true

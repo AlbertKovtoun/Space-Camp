@@ -100,7 +100,8 @@ void main()
 
     //Move model back
     // modelPosition.xz -= 0.75;
-    modelPosition.x += 0.06;
+    // modelPosition.x += 0.06;
+    modelPosition.x += 0.04;
 
     vec4 viewPosition = viewMatrix * modelPosition;
 

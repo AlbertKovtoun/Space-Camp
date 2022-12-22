@@ -67,8 +67,8 @@ $secondary-color: #ffff00;
 .rover-container,
 .core-container {
   position: absolute;
-  width: 400px;
-  height: 300px;
+  /* width: 400px; */
+  /* height: 300px; */
   background-color: black;
   color: #a8cfe7;
   right: 8%;
@@ -78,8 +78,9 @@ $secondary-color: #ffff00;
   visibility: hidden;
   opacity: 0;
   transition: opacity 2s ease-in-out;
-  padding: 2%;
+  /* padding: 2%; */
   // line-height: 40px;
+  border-radius: 50px;
 }
 
 button {
@@ -89,6 +90,7 @@ button {
   font-weight: bold;
   font-size: 2rem;
   padding: 1rem;
+  border-radius: 50px;
 }
 
 .rover-container.active,

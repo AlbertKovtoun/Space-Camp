@@ -13,8 +13,8 @@ export class Lights {
     this.tubeLights = []
     this.tubeLightHelpers = []
 
-    const ambientLight = new THREE.AmbientLight(0xbbddff, 0.1)
-    scene.add(ambientLight)
+    // const ambientLight = new THREE.AmbientLight(0xbbddff, 0.1)
+    // scene.add(ambientLight)
 
     const pointLight = new THREE.PointLight(0xbbddff, 0.4)
     pointLight.position.set(0, 2, 2)
